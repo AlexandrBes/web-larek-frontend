@@ -11,7 +11,7 @@
 - src/pages/index.html — HTML-файл главной страницы
 - src/types/index.ts — файл с типами
 - src/index.ts — точка входа приложения
-- src/styles/styles.scss — корневой файл стилей
+- src/scss/styles.scss — корневой файл стилей
 - src/utils/constants.ts — файл с константами
 - src/utils/utils.ts — файл с утилитами
 
@@ -85,19 +85,16 @@ yarn build
  7. `priceBasket: number` - общая стоимость товара в корзине.
     
 Методы класса:
-1. `addToBasket` - добавление товара в корзину.
-2. `deleteFromBasket` - удаление товара из корзины. 
-3. `clearBasket` - очистить корзину. 
-4. `getTotalPriceBasket` - сумма товара в корзине.
-5. `updateBasket` - обновление корзины. 
-6. `catalogProduct` - вывод товара в каталог.
-7. `getCurrentOrder` - проверка валидности заказа.
-8. `clearOrder` - очистка оформления заказа.
-9. `setPayment` - способ оплаты.
-10. `getReturnProduct` - возврат товара из заказа.
-11. `setDeliveryAdress` - адрес доставки.
-12. `setContactDetails` - контактные данные.
-13. `setPreview` - предпросмотр товара.
+1. `pushToBasket(id: string)` - добавление товара в список заказаных.
+2. `deleteFromBasket(id: string)` - удаление товара из списка заказных.
+3. `basketProduct(id: string): boolean` - проверяет есть ли товар в списке заказаных.
+4. `addToBasket(item: IProduct)` - добавление товара в корзину.
+5. `clearBasket()` - очистить корзину. 
+6. `getTotalPriceBasket(): number` - сумма товара в корзине.
+7. `setCatalogProduct(item: IProduct[])` - вывод товара в каталог.
+8. `getCurrentOrder()` - введные в форме данные заказа проверяет на валидность, если есть ошибка сработает событие formError и вернет false, иначе true
+9. `setOrderField(field: keyof IOrderForm, value: string)` - Проверяет валидность данных и устанавливает значение в поле формы заказа, если ошибки нет сработает событие order: true.
+
 
 <br>
 
