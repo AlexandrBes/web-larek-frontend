@@ -273,5 +273,5 @@ yarn build
 1. `close: HTMLElement` - кнопка закрытия сообщения об успешном заказе.
 2. `successDescription: HTMLElement` -  отображения описания успешного заказа.
 
-Методы класса: 
-`setTotal(value: string)` - текстовое описание успешного заказа.
+Методы класса:
+1. `setTotal(value: string)` - текстовое описание успешного заказа.
