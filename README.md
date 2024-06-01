@@ -83,21 +83,26 @@ yarn build
 1. `catalog: IProduct[]` - массив товаров.
 2. `basket: IProduct[]` - корзина с товарами.
 3. `order: IOrder` - информация о заказе.
-4. `preview: string` - предосмотр товара.
+4. `preview: string | null` - предосмотр товара.
 5. `loading: boolean` - загрузка товара.
 6. `formErrors: FormErrors` - ошибки ввода данных в форме заказа.
 7. `priceBasket: number` - общая стоимость товара в корзине.
     
 Методы класса:
-1. `pushToBasket(id: string)` - добавление товара в список заказаных.
-2. `deleteFromBasket(id: string)` - удаление товара из списка заказных.
-3. `basketProduct(id: string): boolean` - проверяет есть ли товар в списке заказаных.
-4. `addToBasket(item: IProduct)` - добавление товара в корзину.
-5. `clearBasket()` - очистить корзину. 
-6. `getTotalPriceBasket(): number` - сумма товара в корзине.
-7. `setCatalogProduct(item: IProduct[])` - вывод товара в каталог.
-8. `getCurrentOrder()` - введеные в форме данные заказа проверяет на валидность, если есть ошибка сработает событие formError и вернет false, иначе true
-9. `setOrderField(field: keyof IOrderForm, value: string)` - Проверяет валидность данных и устанавливает значение в поле формы заказа, если ошибки нет сработает событие order: true.
+1. `catalogProduct(item: IProduct[])` - вывод товара в каталог.
+2. `setPreview(item: IProduct)` - предпросмотр товара.
+3. `addToBasket(item: IProduct)` - добавление товара в корзину.
+4. `removeToBasket(id: string)` - удаление товара из корзины.
+5. `getDeleteFromBasket(): IProduct[]` - удаление товара из списка заказных.
+6. `getBasketProduct(item: IProduct): boolean` - проверяет есть ли товар в списке заказаных.
+7. `getTotalPriceBasket(): number` - сумма товара в корзине. 
+8. `clearBasket()` - очистить корзину.
+9. `stateBasket()` - состояние корзины.
+10. `clearForm()` - сброс полей заказа.
+11. `setPayment(method: string)` - способ оплаты.
+12. `setOrderAdress` - адрес доставки
+13. `setOrderContact` - контактные данные
+14. `validateOrder()` & `validateContact()` - введеные в форме данные заказа проверяет на валидность, если есть ошибка сработает событие formErrors и вернет false, иначе true.
 
 ---
 
