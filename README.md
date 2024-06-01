@@ -83,21 +83,26 @@ yarn build
 1. `catalog: IProduct[]` - массив товаров.
 2. `basket: IProduct[]` - корзина с товарами.
 3. `order: IOrder` - информация о заказе.
-4. `preview: string` - предосмотр товара.
+4. `preview: string | null` - предосмотр товара.
 5. `loading: boolean` - загрузка товара.
 6. `formErrors: FormErrors` - ошибки ввода данных в форме заказа.
 7. `priceBasket: number` - общая стоимость товара в корзине.
     
 Методы класса:
-1. `pushToBasket(id: string)` - добавление товара в список заказаных.
-2. `deleteFromBasket(id: string)` - удаление товара из списка заказных.
-3. `basketProduct(id: string): boolean` - проверяет есть ли товар в списке заказаных.
-4. `addToBasket(item: IProduct)` - добавление товара в корзину.
-5. `clearBasket()` - очистить корзину. 
-6. `getTotalPriceBasket(): number` - сумма товара в корзине.
-7. `setCatalogProduct(item: IProduct[])` - вывод товара в каталог.
-8. `getCurrentOrder()` - введеные в форме данные заказа проверяет на валидность, если есть ошибка сработает событие formError и вернет false, иначе true
-9. `setOrderField(field: keyof IOrderForm, value: string)` - Проверяет валидность данных и устанавливает значение в поле формы заказа, если ошибки нет сработает событие order: true.
+1. `catalogProduct(item: IProduct[])` - вывод товара в каталог.
+2. `setPreview(item: IProduct)` - предпросмотр товара.
+3. `addToBasket(item: IProduct)` - добавление товара в корзину.
+4. `removeToBasket(id: string)` - удаление товара из корзины.
+5. `getDeleteFromBasket(): IProduct[]` - удаление товара из списка заказных.
+6. `getBasketProduct(item: IProduct): boolean` - проверяет есть ли товар в списке заказаных.
+7. `getTotalPriceBasket(): number` - сумма товара в корзине. 
+8. `clearBasket()` - очистить корзину.
+9. `stateBasket()` - состояние корзины.
+10. `clearForm()` - сброс полей заказа.
+11. `setPayment(method: string)` - способ оплаты.
+12. `setOrderAdress` - адрес доставки
+13. `setOrderContact` - контактные данные
+14. `validateOrder()` & `validateContact()` - введеные в форме данные заказа проверяет на валидность, если есть ошибка сработает событие formErrors и вернет false, иначе true.
 
 ---
 
@@ -141,19 +146,17 @@ yarn build
 6. `button: HTMLButtonElement` - кнопка на карточке товара.
 
 Методы класса:
-1. `setImage(image: HTMLImageElement, src: string, alt: string)` - устанавливаем изображение карточки с альтер. текстом.
-2. `set image(value: string)` - устанавливаем изображение карточки.
-3. `set title(value: string)` - устанавливаем заголовок карточки.
-4. `get title(): string` - возвращаем заголовок карточки.
-5. `set description(value: string | string[])` - устанавливаем описание карточки.
-6. `setPriceText(price: HTMLElement, value: number | null)` - устанавливаем текст цены карточки.
-7. `set price(value: number | null)` - устанавливаем цену товара.
-8. `get price(): number | string` - возвращаем цену товара.
-9. `set button(value: HTMLButtonElement)` - устанавливаем кнопку карточки.
-10. `toggleButtonState(button: HTMLButtonElement, isEnabled: boolean)` - устанавливаем состояние кнопки.
-11. `setTextCategory(element: HTMLElement, text: string)` - устанавливаем текст категории карточки.
-12. `set id(value: string)` - устанавливаем идентификатор карточки.
-13. `get id(): string` - возвращаем идентификатор карточки.
+1. `set image(value: string)` - устанавливаем изображение карточки.
+2. `set id(value: string)` - устанавливаем идентификатор карточки.
+3. `get id(): string` - возвращаем идентификатор карточки.
+4. `set title(value: string)` - устанавливаем заголовок карточки.
+5. `get title(): string` - возвращаем заголовок карточки.
+6. `set description(value: string | string[])` - устанавливаем описание карточки.
+7. `set TextCategory(value: string)` - устанавливаем текст категории карточки.
+8. `set price(value: number | null)` - устанавливаем цену товара.
+9. `get price(): number` - возвращаем цену товара.
+10. `set button(value: HTMLButtonElement)` - устанавливаем кнопку карточки.
+
 
 #### Класс `Page`
 Отображает главную страницу сайта, каталог товаров и счетчик сайта.
@@ -186,14 +189,11 @@ yarn build
 1. `list: HTMLElement` - список товаров в корзине.
 2. `total: HTMLElement` - отображение общей стоимости товаров в корзине.
 3. `button: HTMLElement` - кнопка оформления заказ
-4. `delete: HTMLElement` - кнопка удаления товара из корзины.
 
 Методы класс:
-1. `get list(): HTMLElement` - получения списка товаров в корзине.
-2. `set item(item: HTMLElement): void` - добавления отдельного товара в корзину.
-3. `set items(items: HTMLElement[]): void` - для замены списка товаров в корзине новым списком. Если переданный массив товаров не пуст, он заменяет текущий список товаров в корзине. Если массив пуст, в списке отображается сообщение о том, что корзина пуста.
-4. `get button(): HTMLElement` - получения кнопки оформления заказа.
-5. `set total(total: number): void` - отображения общей стоимости товаров в корзине.
+1. `disableButton(value: string): HTMLElement` - получения кнопки оформления заказа.
+2. `get items(items: HTMLElement[])` - получения списка товаров в корзине.
+3. `set total(total: number)` - отображения общей стоимости товаров в корзине.
 
 #### Класс `Modal`
 Открытие и закрытие модульных окон и вывод в них контента.
@@ -216,17 +216,17 @@ yarn build
 Форма оформления заказа.
 
 Конструктор принимает такие аргументы:
-Инициализирует форму, добавляет слушатель событий ввода данных для обработки изменений в полях формы.
+Отвечает за работу формы заказа, в которой указываются контактные данные (номер телефона и email).
 1. `container: HTMLFormElement` - контейнер формы.
 2. `events: IEvents` - брокера событий.
 
 Поля класса:
-1. `submit: HTMLButtonElement` - кнопки отправки формы.
-2. `errors: HTMLElement` - отображениe ошибок формы.
+1. `emailInput: HTMLButtonElement` - email.
+2. `phoneInput: HTMLElement` - номер телефона.
 
 Методы класса:
-1. `onInputChange(field: keyof T, value: string)` - обрабатывает изменения значения в поле формы и инициирует соответствующее событие.
-2. `render(state: Partial<T> & IFormState)` - рендерит состояние формы, включая валидность, ошибки и значения полей.
+1. `set phone(value: string)` - номер телефона.
+2. `set email(value: string)` - email.
 
 #### Класс `Order`
 Форма со способом оплаты и адресом доставки.
@@ -236,34 +236,11 @@ yarn build
 1. `container: HTMLFormElement` - контейнер формы.
 2. `events: IEvents` - брокера событий.
 
-Поля класса:
-1. `cash: HTMLButtonElement` - кнопка для оплаты наличными.
-2. `card: HTMLButtonElement` - кнопка для оплаты картой.
-3. `activeButton: HTMLButtonElement | null` - кнопка оплаты.
-4. `next: HTMLButtonElement` - кнопка "Далее".
+Методы и поля класса: 
+1. `set address(value: string)` - отвечает за выбор адреса доставки.
+2. `addressInput` - принимает адрес в поле.
 
-Методы класс: 
-1. `cash(value: string)` - значение поля "оплата наличными".
-2. `card(value: string)` - значение поля "оплата картой".
-3. `address(value: string)` - значение поля "адрес доставки".
-4. `validNextBtn(value: boolean)` - доступность кнопки "Далее".
-5. `errors(value: string)` - текст ошибки для отображения пользователю.
-
-#### Класс `ContactForm`
-Форма с номером телефона и почтой.
-
-Конструктор принимает такие аргументы:
-Инициализирует форму, добавляет слушатель на событие отправки формы для предотвращения ее дефолтного поведения, инициирует событие при отправке формы.
-1. `container: HTMLFormElement` - контейнер формы.
-2. `events: IEvents` - брокера событий.
-
-Методы класс: 
-1. `phone(value: string)` - значение поля "телефон" формы.
-2. `email(value: string)` - значение поля "email" формы.
-3. `validSubmitBtn: HTMLButtonElement` - кнопка для отправки формы.
-4. `errors(value: string)` - текст ошибки для отображения пользователю.
-
-#### Класс `Succes`
+#### Класс `Success`
 Сообщение об успешном оформление заказа.
 
 Конструктор принимает такие аргументы:
@@ -273,7 +250,7 @@ yarn build
 
 Поля класса: 
 1. `close: HTMLElement` - кнопка закрытия сообщения об успешном заказе.
-2. `successDescription: HTMLElement` -  отображения описания успешного заказа.
+2. `total: HTMLElement` -  отображения описания успешного заказа.
 
 Методы класса:
 1. `setTotal(value: string)` - текстовое описание успешного заказа.
