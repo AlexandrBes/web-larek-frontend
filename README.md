@@ -146,19 +146,17 @@ yarn build
 6. `button: HTMLButtonElement` - кнопка на карточке товара.
 
 Методы класса:
-1. `setImage(image: HTMLImageElement, src: string, alt: string)` - устанавливаем изображение карточки с альтер. текстом.
-2. `set image(value: string)` - устанавливаем изображение карточки.
-3. `set title(value: string)` - устанавливаем заголовок карточки.
-4. `get title(): string` - возвращаем заголовок карточки.
-5. `set description(value: string | string[])` - устанавливаем описание карточки.
-6. `setPriceText(price: HTMLElement, value: number | null)` - устанавливаем текст цены карточки.
-7. `set price(value: number | null)` - устанавливаем цену товара.
-8. `get price(): number | string` - возвращаем цену товара.
-9. `set button(value: HTMLButtonElement)` - устанавливаем кнопку карточки.
-10. `toggleButtonState(button: HTMLButtonElement, isEnabled: boolean)` - устанавливаем состояние кнопки.
-11. `setTextCategory(element: HTMLElement, text: string)` - устанавливаем текст категории карточки.
-12. `set id(value: string)` - устанавливаем идентификатор карточки.
-13. `get id(): string` - возвращаем идентификатор карточки.
+1. `set image(value: string)` - устанавливаем изображение карточки.
+2. `set id(value: string)` - устанавливаем идентификатор карточки.
+3. `get id(): string` - возвращаем идентификатор карточки.
+4. `set title(value: string)` - устанавливаем заголовок карточки.
+5. `get title(): string` - возвращаем заголовок карточки.
+6. `set description(value: string | string[])` - устанавливаем описание карточки.
+7. `set TextCategory(value: string)` - устанавливаем текст категории карточки.
+8. `set price(value: number | null)` - устанавливаем цену товара.
+9. `get price(): number` - возвращаем цену товара.
+10. `set button(value: HTMLButtonElement)` - устанавливаем кнопку карточки.
+
 
 #### Класс `Page`
 Отображает главную страницу сайта, каталог товаров и счетчик сайта.
