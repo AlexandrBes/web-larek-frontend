@@ -68,6 +68,11 @@ export class AppState extends Model<IAppState> {
     return this.order.items.reduce((total, item) => total + this.catalog.find(it => it.id === item).price, 0)
   }
 
+  getTotal(){
+    return  this.basket.reduce((summ, IProductItem)=> 
+      summ+IProductItem.price,0);
+}
+
   stateBasket() {
     this.emitChanges('counter:changed', this.basket);
     this.emitChanges('basket:changed', this.basket);
@@ -113,7 +118,7 @@ export class AppState extends Model<IAppState> {
       errors.address = 'Необходимо указать адрес'
     }
     this.formErrors = errors;
-    this.events.emit('deliveryFormError:change', this.formErrors)
+    this.events.emit('orderFormError:change', this.formErrors)
     return Object.keys(errors).length === 0
   }
 

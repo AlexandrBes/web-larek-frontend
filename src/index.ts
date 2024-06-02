@@ -104,7 +104,8 @@ events.on('basket:changed', () => {
     const product = new BasketItem(cloneTemplate(productBasketTemplate), index, {
         onClick: () => {
           appState.removeToBasket(item.id)
-          basket.total = appState.getTotalPriceBasket();        
+          basket.total = appState.getTotalPriceBasket();  
+          basket.total = appState.getTotal()     
         },
     });
     total = total + item.price;
@@ -153,7 +154,7 @@ events.on('order:submit', () => {
       errors: [],
     })
   })
-});
+}); 
 
 events.on('contacts:submit', () => {
   api.orderProduct(appState.order)
@@ -175,6 +176,7 @@ events.on('contacts:submit', () => {
       console.error(err);
     });
 });
+
 events.on('modal:open', () => {
   page.locked = true;
 });
@@ -208,7 +210,7 @@ events.on(/^contacts\..*:change/, (data: {field: keyof IForm, value: string}) =>
 });
 
 api.getProductList()
-    .then(appState.catalogProduct.bind(appState))
-    .catch(err => {
-      console.log(err);
-    });
+  .then(appState.catalogProduct.bind(appState))
+  .catch(err => {
+    console.log(err);
+  });
