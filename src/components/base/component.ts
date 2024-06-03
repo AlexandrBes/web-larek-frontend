@@ -1,6 +1,5 @@
 export abstract class Component<T> {
   protected constructor(protected readonly container: HTMLElement) {
-  
   }
   
   // Переключить класс

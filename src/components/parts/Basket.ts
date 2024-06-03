@@ -52,7 +52,19 @@ export class BasketItem extends Component<IBasketItem> {
   protected _title: HTMLElement;
   protected _price: HTMLElement;
   protected _button: HTMLButtonElement;
-  
+
+  set index(value: number) {
+    this.setText(this._index, value)
+  }
+
+  set title(value: string) {
+    this.setText(this._title, value)
+  }
+
+  set price(value: number) {
+    this.setText(this._price, `${value} синапсов`);
+  }
+
   constructor(container: HTMLElement, index: number, action?: IProductAction) {
     super(container);
     this._index = ensureElement<HTMLElement>('.basket__item-index', container);
@@ -66,17 +78,4 @@ export class BasketItem extends Component<IBasketItem> {
       }
     }
   }
-
-  set index(value: number) {
-    this.setText(this._index, value)
-  }
-
-  set title(value: string) {
-    this.setText(this._title, value)
-  }
-
-  set price(value: number) {
-    this.setText(this._price, value);
-  }
-
 }

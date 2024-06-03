@@ -1,5 +1,5 @@
 import { Component } from '../../components/base/component';
-import { IProduct, IProductAction } from '../../types';
+import { IProduct, IProductAction} from '../../types';
 import { ensureElement } from '../../utils/utils';
 
 export class Product extends Component<IProduct> {
@@ -79,7 +79,7 @@ export class Product extends Component<IProduct> {
     }
   }
 
-  set TextCategory(value: string) {
+  set category(value: string) {
     this.setText(this._category, value);
     const category = this._category.classList[0];
     this._category.className = '';

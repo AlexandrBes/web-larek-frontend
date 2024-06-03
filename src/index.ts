@@ -1,12 +1,12 @@
 import './scss/styles.scss';
 
 import { EventEmitter } from './components/base/events';
-import  { Modal } from './components/modal/Modal';
+import  { Modal } from './components/common/Modal';
 
 import { AppState, CatalogChange } from './components/parts/AppState';
 import { Basket, BasketItem } from './components/parts/Basket';
 import { Product } from './components/parts/Product';
-import { Contacts } from './components/parts/Form';
+import { ContactsForm } from './components/parts/ContactsForm';
 import { AppApi } from './components/parts/AppApi';
 import { Order } from './components/parts/Order';
 import { Page } from './components/parts/Page';
@@ -32,7 +32,7 @@ const page = new Page(document.body, events);
 const modal = new Modal(ensureElement<HTMLElement>('#modal-container'), events);
 const basket = new Basket(cloneTemplate(basketTemplate), events);
 const order = new Order(cloneTemplate(orderTemplate), events)
-const contacts = new Contacts(cloneTemplate(contactTemplate), events);
+const contacts = new ContactsForm(cloneTemplate(contactTemplate), events);
 
 events.on<CatalogChange>('items:changed', () => {
   page.catalog = appState.catalog.map(item => {

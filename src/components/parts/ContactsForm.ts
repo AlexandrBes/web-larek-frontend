@@ -1,8 +1,8 @@
-import { Form } from '../modal/Form';
+import { Form } from '../common/Form';
 import { IForm } from '../../types';
-import { IEvents } from '../../components/base/events';
+import { IEvents } from '../base/events';
 
-export class Contacts extends Form<IForm> {
+export class ContactsForm extends Form<IForm> {
   protected _emailInput: HTMLInputElement;
   protected _phoneInput: HTMLInputElement;
 
